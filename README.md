@@ -54,17 +54,20 @@ Depends on [`padosoft/laravel-rebel-core`](https://github.com/padosoft/laravel-r
 
 ## Rebel Recovery vs the alternatives
 
-| Capability | **Rebel Recovery** | Fortify recovery codes | Hand-rolled |
-|---|:---:|:---:|:---:|
-| Codes hashed at rest | ✅ | ➖ (encrypted blob) | ❌ |
-| Keyed HMAC + key_version (pepper rotation) | ✅ | ❌ | ❌ |
-| Constant-time verification | ✅ | ➖ | ❌ |
-| Atomic single-use (row lock) | ✅ | ➖ | ❌ |
-| Input normalization (typo-tolerant) | ✅ | ❌ | ❌ |
-| ~100-bit entropy codes | ✅ | ➖ (~50 bits) | ➖ |
-| Audited + multi-tenant | ✅ | ❌ | ❌ |
+| Capability | **Rebel Recovery** | Shopify | Fortify recovery codes | Hand-rolled |
+|---|:---:|:---:|:---:|:---:|
+| Self-issued recovery codes for your users | ✅ | ❌ | ✅ | ➖ |
+| Codes hashed at rest (you control storage) | ✅ | ❌ | ➖ (encrypted blob) | ❌ |
+| Keyed HMAC + key_version (pepper rotation) | ✅ | ❌ | ❌ | ❌ |
+| Constant-time verification | ✅ | ➖ | ➖ | ❌ |
+| Atomic single-use (row lock) | ✅ | ➖ | ➖ | ❌ |
+| Input normalization (typo-tolerant) | ✅ | ➖ | ❌ | ❌ |
+| ~100-bit entropy codes | ✅ | ➖ | ➖ (~50 bits) | ➖ |
+| Audited + multi-tenant (your app) | ✅ | ❌ | ❌ | ❌ |
 
-> Legend: ✅ built-in · ➖ partial · ❌ not available.
+> Legend: ✅ built-in · ➖ partial / hosted-only / not exposed to you · ❌ not available.
+>
+> Note: Shopify is a hosted, closed commerce platform — its own staff/customer logins may have backup codes, but it never exposes a self-hostable, HMAC-hashed, single-use recovery-code API you can issue to your application's users.
 
 ---
 
