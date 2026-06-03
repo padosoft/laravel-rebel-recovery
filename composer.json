@@ -1,6 +1,6 @@
 {
   "name": "padosoft/laravel-rebel-recovery",
-  "description": "Account recovery ad alta assurance per Laravel Rebel (recovery come step-up rafforzato, backup codes, anti-ATO).",
+  "description": "High-assurance account recovery for Laravel Rebel: single-use HMAC-hashed recovery (backup) codes, generated once at enrolment, with anti-ATO checks. Part of padosoft/laravel-rebel-*.",
   "license": "MIT",
   "keywords": [
     "laravel",
@@ -51,7 +51,12 @@
   "scripts": {
     "test": "pest",
     "phpstan": "phpstan analyse --memory-limit=512M",
-    "pint": "pint"
+    "pint": "pint",
+    "check": [
+      "pint --test",
+      "@phpstan",
+      "@test"
+    ]
   },
   "config": {
     "sort-packages": true,
